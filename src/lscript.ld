@@ -35,6 +35,7 @@ PHDRS
 {
   text PT_LOAD FLAGS(5);    /* Readable and executable */
   data PT_LOAD FLAGS(7);    /* Readable, writable, executable */
+  dynamic PT_DYNAMIC; 
 }
 
 SECTIONS
@@ -115,6 +116,26 @@ SECTIONS
    *(.got)
    *(.got.plt)
    __data_end = .;
+} > psu_ddr_0_MEM_0 :data
+
+.dynamic : {
+   *(.dynamic)
+} > psu_ddr_0_MEM_0 :data
+
+.dynsym : {
+   *(.dynsym)
+} > psu_ddr_0_MEM_0 :data
+
+.dynstr : {
+   *(.dynstr)
+} > psu_ddr_0_MEM_0 :data
+
+.rela.dyn : {
+   *(.rela.dyn)
+} > psu_ddr_0_MEM_0 :data
+
+.plt : {
+   *(.plt)
 } > psu_ddr_0_MEM_0 :data
 
 .data1 : {
